@@ -40,6 +40,21 @@ public class IntListTest {
      * Anything can happen to A.
      */
 
+
+    @Test
+    public void testReverse(){
+        IntList L = IntList.of(1,2,3,4,5);
+        IntList Lr = IntList.of(5,4,3,2,1);
+        IntList cur = IntList.reverse(L);
+        assertEquals(Lr,cur);
+        assertNotEquals(L,IntList.of(1,2,3,4,5));
+
+        IntList N = null;
+        IntList cuN = IntList.reverse(N);
+        assertNull(cuN);
+
+    }
+
     @Test
     public void testSquareListRecursive() {
         IntList L = IntList.of(1, 2, 3);
