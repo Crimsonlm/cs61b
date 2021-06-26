@@ -37,10 +37,14 @@ public class IntList {
      * Returns a list equal to L with all elements squared. Destructive.
      */
     public static void dSquareList(IntList L) {
-
-        while (L != null) {
-            L.first = L.first * L.first;
-            L = L.rest;
+//        while(L.rest!=null){
+//            L.first=L.first*L.first;
+//            L=L.rest;
+//        }
+//        L.first=L.first*L.first;
+        while(L!=null){
+            L.first=L.first*L.first;
+            L=L.rest;
         }
     }
 
@@ -58,6 +62,7 @@ public class IntList {
             ptr.rest = new IntList(L.first * L.first, null);
             L = L.rest;
             ptr = ptr.rest;
+            //其实就是自己搞个指针，通过指针移动实现。如果不用指针没有办法做到移动位置。
         }
         return res;
     }
@@ -69,7 +74,8 @@ public class IntList {
         if (L == null) {
             return null;
         }
-        return new IntList(L.first * L.first, squareListRecursive(L.rest));
+        return new IntList(L.first*L.first,squareListRecursive(L.rest));
+
     }
 
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
@@ -83,7 +89,7 @@ public class IntList {
     public static IntList dcatenate(IntList A, IntList B) {
         IntList temp = A;
         while(temp.rest!=null){
-            temp =temp.rest;
+            temp=temp.rest;
         }
         temp.rest=B;
         return A;
@@ -94,29 +100,10 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        IntList C = new IntList(A.first,null);
-        IntList Atemp = A;
-        IntList Ctemp = C;
-        while(Atemp.rest!=null){
-            Atemp=Atemp.rest;
-            Ctemp.rest=new IntList(Atemp.first, null);
-            Ctemp=Ctemp.rest;
-        }
-        Ctemp.rest=B;
-        return C;
-
-
-
-//
-//        IntList res = new IntList(L.first * L.first, null);
-//        IntList ptr = res;
-//        L = L.rest;
-//        while (L != null) {
-//            ptr.rest = new IntList(L.first * L.first, null);
-//            L = L.rest;
-//            ptr = ptr.rest;
-//        }
-//        return res;
+            if(A==null){
+                return B;
+            }
+            return new IntList(A.first,catenate(A.rest,B));
 
     }
 
