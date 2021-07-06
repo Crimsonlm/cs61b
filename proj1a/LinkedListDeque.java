@@ -49,6 +49,9 @@ public class LinkedListDeque <T>{
             return false;
         }
     }
+    public int size(){
+        return size;
+    }
 
     public void printDeque(){
         Node cur = sentinel;
