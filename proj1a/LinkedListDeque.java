@@ -24,12 +24,12 @@ public class LinkedListDeque <T>{
      * 我只会创建一个含一个数字的链表 它一定是这样。
      * @param x
      */
-    public LinkedListDeque(T x){
-        sentinel = new Node(null,null,null);
-        sentinel.next=new Node(x,sentinel,sentinel);
-        sentinel.prev= sentinel.next; //这里不能new 因为你要说明 它的上一个就是 sentinel.next。
-        size=1;
-    }
+//    public LinkedListDeque(T x){
+//        sentinel = new Node(null,null,null);
+//        sentinel.next=new Node(x,sentinel,sentinel);
+//        sentinel.prev= sentinel.next; //这里不能new 因为你要说明 它的上一个就是 sentinel.next。
+//        size=1;
+//    }
 
     public void addFirst(T item){
         sentinel.next.prev=new Node(item,sentinel,sentinel.next);
@@ -80,6 +80,7 @@ public class LinkedListDeque <T>{
             T result =sentinel.prev.item;
             sentinel.prev.prev.next=sentinel;
             sentinel.prev=sentinel.prev.prev;
+            size-=1;
             return result;
         }else{
             return null;
