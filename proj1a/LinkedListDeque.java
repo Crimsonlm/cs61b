@@ -114,6 +114,14 @@ public class LinkedListDeque <T>{
         }
     }
 
+    public static void main(String[] args) {
+        LinkedListDeque l =new LinkedListDeque();
+        l.addFirst("Ass");
+        l.addFirst("Bcd");
+        l.printDeque();
+
+    }
+
 
 
 }
